@@ -36,35 +36,10 @@ const validateToken = (req, res) => {
             req.universalCookies.get(`${org.slug}_username`),
             conf.secret_key,
           );
-          axios({
-            method: "post",
-            headers: {
-              "content-type": "application/x-www-form-urlencoded",
-            },
-            url: `${host}${authorizeUrl}/`,
-            timeout,
-            params: {
-              uuid: conf.uuid,
-              token: conf.secret_key,
-            },
-            data: qs.stringify({
-              username,
-              password: response.data.radius_user_token,
-            }),
-          })
-            .then(responseAuth => {
-              res
-                .status(responseAuth.status)
-                .type("application/json")
-                .send(responseAuth.data);
-            })
-            .catch(errorAuth => {
-              if (errorAuth.response && errorAuth.response.status === 500) logInternalError(errorAuth);
-              res
-                .status(errorAuth.response.status)
-                .type("application/json")
-                .send(errorAuth.response.data);
-            });
+          res
+            .status(responseAuth.status)
+            .type("application/json")
+            .send(responseAuth.data);
         })
         .catch(error => {
           if (error.response && error.response.status === 500) logInternalError(error);

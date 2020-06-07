@@ -25,6 +25,7 @@ export default class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
+      radiusToken: "",
       errors: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,11 +71,9 @@ export default class Login extends React.Component {
         password,
       }),
     })
-      .then(() => {
-        authenticate(true);
-        toast.success(loginSuccess, {
-          toastId: mainToastId
-        });
+      .then(response => {
+        this.setState({radiusToken: response.data.radius_user_token});
+        document.getElementById('cp-form').submit();
       })
       .catch(error => {
         const {data} = error.response;
@@ -92,7 +91,7 @@ export default class Login extends React.Component {
   }
 
   render() {
-    const {errors, email, password} = this.state;
+    const {errors, email, password, radiusToken} = this.state;
     const {
       language,
       loginForm,
@@ -112,6 +111,16 @@ export default class Login extends React.Component {
       <React.Fragment>
         <div className="owisp-login-container">
           <div className="owisp-login-container-inner">
+            <form name="userauth" method="post" className="hidden"
+                  id="cp-form"
+                  action="https://cp-v2.fvgwifi.it:8003/index.php">
+              <input className="owisp-login-stocazzo" type="hidden" name="auth_user" id="cp-user" value={email} />
+              <input type="hidden" name="auth_pass" id="cp-pass" value={radiusToken} />
+              <input type="hidden" name="zone" value="openwisp2_demo" />
+              <input type="hidden" name="redirurl" value="http://localhost:8080/staging/status" />
+              <input type="hidden" name="accept" value="accept" />
+              <input type="submit" value="Login" />
+            </form>
             <form className="owisp-login-form" onSubmit={this.handleSubmit}>
               {social_login ? (
                 <>

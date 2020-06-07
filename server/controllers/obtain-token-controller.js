@@ -46,7 +46,7 @@ const obtainToken = (req, res) => {
             .cookie(`${conf.slug}_username`, usernameCookie, {
               maxAge: 1000 * 60 * 60 * 24,
             })
-            .send();
+            .send({radius_user_token: response.data.radius_user_token});
         })
         .catch(error => {
           if (error.response && error.response.status === 500) logInternalError(error);
