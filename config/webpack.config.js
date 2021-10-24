@@ -65,7 +65,11 @@ module.exports = (env, argv) => {
     minimizers = [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),
-      new UglifyJsPlugin({parallel: true, extractComments: true}),
+      new UglifyJsPlugin({
+        parallel: true,
+        extractComments: true,
+        sourceMap: true,
+      }),
     ];
     setup.removeDefaultConfig();
     plugins.push(
@@ -103,8 +107,9 @@ module.exports = (env, argv) => {
 
   return {
     context: path.resolve(CURRENT_WORKING_DIR, "client"),
+    devtool: "source-map",
     entry: {
-      main: "./index.js",
+      main: ["babel-polyfill", "./index.js"],
     },
     output: {
       filename:
