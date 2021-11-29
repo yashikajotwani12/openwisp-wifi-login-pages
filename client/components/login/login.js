@@ -223,6 +223,7 @@ export default class Login extends React.Component {
       })
       .catch((error = {}) => {
         if (!error.response || !error.response.data || !error) {
+          if (window.Sentry) Sentry.captureException(error);
           toast.error(t`ERR_OCCUR`);
           return;
         }

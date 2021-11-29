@@ -233,6 +233,7 @@ export default class Registration extends React.Component {
         // will redirect to status which will validate data again
         // and initiate any verification if needed
         authenticate(true);
+        alert('REG: Siamo arrivati fino a qui');
       })
       .catch((error) => {
         const {data, status} = error.response;

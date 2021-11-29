@@ -10,5 +10,6 @@ const logError = (error, errorText = "") => {
   } else {
     console.log(error);
   }
+  if (window.Sentry) Sentry.captureException(error);
 };
 export default logError;
