@@ -82,6 +82,8 @@ export default class Login extends React.Component {
         true,
       );
     }
+
+    toast.info("LOGIN: Component mounted");
   }
 
   getUsernameField = (input_fields) => {

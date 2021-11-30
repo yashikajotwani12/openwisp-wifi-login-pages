@@ -222,6 +222,7 @@ export default class Registration extends React.Component {
           password2: "",
           success: true,
         });
+        toast.info("DEBUG 1");
         toast.success(t`REGISTER_SUCCESS`, {
           toastId: mainToastId,
         });
@@ -233,7 +234,7 @@ export default class Registration extends React.Component {
         // will redirect to status which will validate data again
         // and initiate any verification if needed
         authenticate(true);
-        alert('REG: Siamo arrivati fino a qui');
+        toast.info("REG: Siamo arrivati fino a qui");
       })
       .catch((error) => {
         const {data, status} = error.response;

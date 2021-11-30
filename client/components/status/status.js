@@ -236,7 +236,7 @@ export default class Status extends React.Component {
       session,
       ...para,
     };
-    alert("STATUS: 1");
+    toast.info("STATUS: 1");
     try {
       const response = await axios({
         method: "get",
@@ -260,7 +260,7 @@ export default class Status extends React.Component {
         "link" in headers && headers.link.includes("next");
       this.setState(options);
     } catch (error) {
-      alert("STATUS: 2 ERR");
+      toast.info("STATUS: 2 ERR");
       // logout only if unauthorized or forbidden
       if (
         error.response &&
