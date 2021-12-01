@@ -61,6 +61,7 @@ export default class PaymentStatus extends React.Component {
   }
 
   logout = () => {
+    toast.info("PaymentStatus.logout()");
     const {logout, cookies, orgSlug, setUserData, userData} = this.props;
     handleLogout(logout, cookies, orgSlug, setUserData, userData);
   };

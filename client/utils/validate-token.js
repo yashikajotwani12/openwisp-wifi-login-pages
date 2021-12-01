@@ -42,6 +42,7 @@ const validateToken = async (
         }),
       });
       if (response.data.response_code !== "AUTH_TOKEN_VALIDATION_SUCCESSFUL") {
+        toast.info("AUTH_TOKEN_VALIDATION_SUCCESSFUL");
         handleLogout(logout, cookies, orgSlug, setUserData, userData);
         logError(
           response,
@@ -56,6 +57,7 @@ const validateToken = async (
         toast.error(error.response.data.detail, {
           toastId: mainToastId,
         });
+        toast.info("error.response.status === 403");
         // Instead of redirecting to status page, it will logout the user.
         handleLogout(
           logout,
@@ -66,6 +68,7 @@ const validateToken = async (
           true,
         );
       } else {
+        toast.info("validateToken failure");
         logError(error, "validateToken failure");
         handleLogout(logout, cookies, orgSlug, setUserData, userData);
       }
@@ -78,6 +81,7 @@ const validateToken = async (
   }
   // returns false if token is invalid or user data is empty
   else {
+    toast.info("returns false if token is invalid or user data is empty");
     handleLogout(logout, cookies, orgSlug, setUserData, userData);
     return false;
   }

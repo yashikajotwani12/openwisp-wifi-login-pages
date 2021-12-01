@@ -293,6 +293,7 @@ export default class Status extends React.Component {
   }
 
   handleLogout = async (userAutoLogin, repeatLogin = false) => {
+    toast.info("Status.handleLogout()");
     const {setLoading} = this.context;
     const {orgSlug, logout, cookies, setUserData} = this.props;
     const macaddr = cookies.get(`${orgSlug}_macaddr`);
