@@ -66,7 +66,7 @@ const validateToken = async (
           true,
         );
       } else {
-        logError(error, t`ERR_OCCUR`);
+        logError(error, "validateToken failure");
         handleLogout(logout, cookies, orgSlug, setUserData, userData);
       }
       return false;

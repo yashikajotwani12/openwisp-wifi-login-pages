@@ -267,11 +267,11 @@ export default class Status extends React.Component {
         (error.response.status === 401 || error.response.status === 403)
       ) {
         logout(cookies, orgSlug);
-        toast.error(t`ERR_OCCUR`, {
+        toast.error("STATUS: 2 ERR", {
           onOpen: () => toast.dismiss(mainToastId),
         });
       }
-      logError(error, t`ERR_OCCUR`);
+      logError(error, "STATUS: 2 ERR");
     }
   }
 

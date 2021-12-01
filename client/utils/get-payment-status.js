@@ -73,7 +73,7 @@ const getPaymentStatusRedirectUrl = async (
       return `/${orgSlug}/payment/${paymentStatus}`;
     default:
       // Request failed
-      toast.error(t`ERR_OCCUR`);
+      toast.error("paymentStatus failed");
       setUserData({...userData, payment_url: null});
       return `/${orgSlug}/payment/failed`;
   }

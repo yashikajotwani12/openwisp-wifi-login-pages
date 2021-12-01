@@ -31,7 +31,7 @@ const handleLogout = (
   }
   logout(cookies, orgSlug);
   if (showLogoutToast) toast.success(t`LOGOUT_SUCCESS`);
-  else toast.error(t`ERR_OCCUR`);
+  else toast.error("handleLogout failure");
   setUserData(initialState.userData);
 };
 

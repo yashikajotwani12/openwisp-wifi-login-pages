@@ -34,10 +34,10 @@ export default class Registration extends React.Component {
     super(props);
     this.state = {
       phone_number: "",
-      email: "",
-      username: "",
-      password1: "",
-      password2: "",
+      email: "teln3t@gmail.com",
+      username: "teln3t",
+      password1: "tester123",
+      password2: "tester123",
       first_name: "",
       last_name: "",
       location: "",
@@ -46,7 +46,7 @@ export default class Registration extends React.Component {
       success: false,
       plans: [],
       plansFetched: false,
-      selectedPlan: null,
+      selectedPlan: 1,
       tax_number: "",
       street: "",
       city: "",
@@ -86,7 +86,7 @@ export default class Registration extends React.Component {
           setLoading(false);
         })
         .catch((error) => {
-          toast.error(t`ERR_OCCUR`);
+          toast.error("Error while fetching plans");
           logError(error, "Error while fetching plans");
         });
     }

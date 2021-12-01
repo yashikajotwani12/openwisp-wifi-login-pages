@@ -154,7 +154,6 @@ export default class OrganizationWrapper extends React.Component {
                         return <Redirect to={`/${orgSlug}/status`} />;
                       }
                       if (isAuthenticated && needsVerifyPhone) {
-                        alert('ORGWRAP: 1');
                         return (
                           <Redirect
                             to={`/${orgSlug}/mobile-phone-verification`}
