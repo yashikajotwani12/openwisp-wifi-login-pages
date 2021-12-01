@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 
-import {authenticate, setTitle} from "../../actions/dispatchers";
+import {authenticate, setUserData, setTitle} from "../../actions/dispatchers";
 import Component from "./registration";
 
 const mapStateToProps = (state) => {
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     language: state.language,
     registration: conf.components.registration_form,
     settings: conf.settings,
+    // userData: conf.userData,
     privacyPolicy: conf.privacy_policy,
     termsAndConditions: conf.terms_and_conditions,
     orgSlug: conf.slug,
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   authenticate: authenticate(dispatch),
   setTitle: setTitle(dispatch),
+  setUserData: setUserData(dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

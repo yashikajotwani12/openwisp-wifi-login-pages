@@ -17,8 +17,8 @@ const validateToken = async (
   language,
 ) => {
   const url = validateApiUrl(orgSlug);
-  const authToken = cookies.get(`${orgSlug}_auth_token`);
-  toast.info(`authToken: ${authToken}`);
+  const authToken = userData.auth_token;
+  toast.info(`authToken: ${userData.auth_token}`);
   toast.info(`userData: ${JSON.stringify(userData)}`);
   const {token, session} = handleSession(orgSlug, authToken, cookies);
   toast.info(`token: ${token}`);
