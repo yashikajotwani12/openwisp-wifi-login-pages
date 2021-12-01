@@ -18,7 +18,10 @@ const validateToken = async (
 ) => {
   const url = validateApiUrl(orgSlug);
   const authToken = cookies.get(`${orgSlug}_auth_token`);
+  toast.info(`authToken: ${authToken}`);
+  toast.info(`userData: ${JSON.stringify(userData)}`);
   const {token, session} = handleSession(orgSlug, authToken, cookies);
+  toast.info(`token: ${token}`);
   // calling validate token API only if userData.radius_user_token is undefined
   // or payment_url of user is undefined
   if (
